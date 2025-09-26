@@ -1,3 +1,9 @@
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+}
+
 :root {
 	--white: #fff;
 	--black: #000;
