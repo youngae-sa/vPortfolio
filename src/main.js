@@ -1,10 +1,28 @@
+
+import "./assets/scss/layout.scss";
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import "./assets/scss/layout.scss";
+import router from './router/index.js'
 
-const app = createApp(App)
+let app = "";
+let containerSelector = "#app";
 
-app.use(router)
+// check if app has been mounted already
+const mountPoint = document.querySelector(containerSelector);
 
-app.mount('#app')
+if (mountPoint && mountPoint.__vue_app__ !== undefined) {
+
+    // Set the existing mount point to 'app'.
+    app = mountPoint.__vue_app__._instance.proxy;
+}
+else {
+
+    // create a new app instance
+    app = createApp(App);
+
+    // Install the required instances like plugin, component and directive.
+    app.use(router);
+
+    // Mount 'app' (App.vue) as root component.
+    app.mount(containerSelector);
+}

@@ -1,3 +1,3 @@
 <template>
-    
+    Work Project
 </template>

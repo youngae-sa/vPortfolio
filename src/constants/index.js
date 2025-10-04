@@ -1,22 +1,19 @@
 export const headerNav = [
     {
         title: "intro",
-        url: "#intro",
+        url: "/",
     },
     {
-        title: "skill",
-        url: "#skill",
+        title: "work Project",
+        url: "/WorkProject",
     },
     {
-        title: "site",
-        url: "#site",
+        title: "clone coding",
+        url: "/CloneCoding",
     },
     {
         title: "portfolio",
-        url: "#port",
+        url: "/",
     },
-    {
-        title: "contact",
-        url: "#contact",
-    },
+    
 ];
