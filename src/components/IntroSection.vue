@@ -1,9 +1,10 @@
 <template>
     <h2 class="blind">intro</h2>
-    <div class="intro intro__inner">
+    <div class="intro">
+        <div class="intro__inner">
         <div class="welcome_tit">
-            <span id="txt1"></span>
-            <span id="txt2"></span>
+            <span class="txt1" ref="text1"></span>
+            <span class="txt2" ref="text2"></span>
             <svg id="filters">
                 <filter id="threshold">
                     <feColorMatrix in="SourceGraphic"
@@ -112,15 +113,94 @@
                 </ul>
             </div>
         </div>
-        <div class="scroll_down">
-            <div>
-                <p class="mouse">
-                    <span></span>
-                </p>
-                <p class="txt">
-                    scroll down
-                </p>
-            </div>
-        </div>
+        
     </div>
+
+    </div>
+   
 </template>
+<script setup>
+    import { onMounted, ref } from "vue";
+
+    const text1 = ref(null);
+    const text2 = ref(null);
+
+    const texts = [
+    "hello",
+    "welcome",
+    "to",
+    "my",
+    "portfolio",
+    "have a",
+    "nice",
+    "day",
+    ";)"
+    ];
+
+    const morphTime = 1.2;
+    const cooldownTime = 0.25;
+
+    let textIndex = texts.length - 1;
+    let time = new Date();
+    let morph = 0;
+    let cooldown = cooldownTime;
+
+    onMounted(() => {
+    text1.value.textContent = texts[textIndex % texts.length];
+    text2.value.textContent = texts[(textIndex + 1) % texts.length];
+
+    function setMorph(fraction) {
+        text2.value.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+        text2.value.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+        fraction = 1 - fraction;
+        text1.value.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+        text1.value.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+        text1.value.textContent = texts[textIndex % texts.length];
+        text2.value.textContent = texts[(textIndex + 1) % texts.length];
+    }
+
+    function doMorph() {
+        morph -= cooldown;
+        cooldown = 0;
+        let fraction = morph / morphTime;
+
+        if (fraction > 1) {
+        cooldown = cooldownTime;
+        fraction = 1;
+        }
+        setMorph(fraction);
+    }
+
+    function doCooldown() {
+        morph = 0;
+        text2.value.style.filter = "";
+        text2.value.style.opacity = "100%";
+        text1.value.style.filter = "";
+        text1.value.style.opacity = "0%";
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        let newTime = new Date();
+        let shouldIncrementIndex = cooldown > 0;
+        let dt = (newTime - time) / 1000;
+        time = newTime;
+
+        cooldown -= dt;
+
+        if (cooldown <= 0) {
+        if (shouldIncrementIndex) {
+            textIndex++;
+        }
+        doMorph();
+        } else {
+        doCooldown();
+        }
+    }
+
+    animate();
+});
+</script>

@@ -14,10 +14,6 @@
     <HeaderSection />
     <main id="main" role="main">
         <IntroSection />
-        <SkillSection />
-        <SiteSection />
-        <PortSection />
-        <ContactSection />
     </main>
-    <FooterSection />
+    <!-- <FooterSection /> -->
 </template>
