@@ -15,8 +15,7 @@ const router = createRouter({
             children:[
                 {
                     path:'/',
-                    // component: IntroSection,
-                    component:WorkProject
+                    component: IntroSection,
                 },
                 {
                     path:'workProject',
