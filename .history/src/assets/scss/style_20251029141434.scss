@@ -31,11 +31,7 @@
 //         animation: bgMove 150s linear infinite;
 //     }
 // }
-#main{
-    background: -moz-linear-gradient(0deg, rgba(255,254,251,1) 0%, rgba(233,223,207,1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(255,254,251,1) 0%, rgba(233,223,207,1) 100%);
-    background: linear-gradient(0deg, rgba(255,254,251,1) 0%, rgba(233,223,207,1) 100%);
-}
+
 // intro
 .intro {
     height: 100%; padding-top: 100px;
@@ -284,7 +280,7 @@
             left:0;
             top:0;
             border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(239, 232, 219,0.8);
             opacity: 0;
             z-index: -1;
             transition: all 1s;
@@ -324,7 +320,7 @@
         position: relative;
 
         img{transition:all 1s;}
-
+        
         &::after{
             content: " ";
             display: block;

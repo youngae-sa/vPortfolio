@@ -31,11 +31,7 @@
 //         animation: bgMove 150s linear infinite;
 //     }
 // }
-#main{
-    background: -moz-linear-gradient(0deg, rgba(255,254,251,1) 0%, rgba(233,223,207,1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(255,254,251,1) 0%, rgba(233,223,207,1) 100%);
-    background: linear-gradient(0deg, rgba(255,254,251,1) 0%, rgba(233,223,207,1) 100%);
-}
+
 // intro
 .intro {
     height: 100%; padding-top: 100px;
@@ -260,20 +256,8 @@
 }
 
 .work_content{
-    section{
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     .content__inner{
-        height: 60%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 60px 80px;
         position: relative;
-        transition: all 0.5s;
 
         &::before{
             content:'';
@@ -284,7 +268,7 @@
             left:0;
             top:0;
             border-radius: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(239, 232, 219,0.8);
             opacity: 0;
             z-index: -1;
             transition: all 1s;
@@ -300,8 +284,9 @@
     .title_all{
         width: 24%;
         font-size:18px;
-        font-weight: 700;
-        h3{font-size:2.5rem; padding-bottom:3rem; font-weight: 700;color:#EC9322;}
+
+        .slide_num{font-size:2.0rem; font-weight: 700; color:#EC9322; padding-bottom: 10px;}
+        h3{font-size:1.5rem; padding-bottom:3rem;}
         .sub_tit{padding-bottom:1rem;}
         .desc{padding-bottom:3rem;}
         .viewMore{
@@ -314,40 +299,6 @@
 
             &:hover{background-color: #EC9322; color:#fff;}
         }
-    }
-
-    .pc_img{
-        width: 64%;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 20px;
-        position: relative;
-
-        img{transition:all 1s;}
-
-        &::after{
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,.3);
-        }
-        &:hover{
-            img{
-                transform: translateY(-60%);
-                transition: all 7s;
-            }
-            &:after{
-                background-color: rgba(0,0,0,0);
-            }
-        }
-
-        
-
-        
     }
     
 }
